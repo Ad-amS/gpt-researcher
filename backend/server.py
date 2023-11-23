@@ -8,6 +8,10 @@ from gpt_researcher.utils.websocket_manager import WebSocketManager
 from .utils import write_md_to_pdf
 
 
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
+
+
 class ResearchRequest(BaseModel):
     task: str
     report_type: str
@@ -31,9 +35,12 @@ def startup_event():
         os.makedirs("outputs")
     app.mount("/outputs", StaticFiles(directory="outputs"), name="outputs")
 
+
 @app.get("/")
 async def read_root(request: Request):
-    return templates.TemplateResponse('index.html', {"request": request, "report": None})
+    return templates.TemplateResponse(
+        "index.html", {"request": request, "report": None}
+    )
 
 
 @app.websocket("/ws")
@@ -55,4 +62,3 @@ async def websocket_endpoint(websocket: WebSocket):
 
     except WebSocketDisconnect:
         await manager.disconnect(websocket)
-

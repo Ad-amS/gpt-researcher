@@ -1,5 +1,8 @@
 from gpt_researcher import GPTResearcher
 import asyncio
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 async def main():
@@ -7,7 +10,7 @@ async def main():
     This is a sample script that shows how to run a research report.
     """
     # Query
-    query = "What happened in the latest burning man floods?"
+    query = "Kto je nový minister dopravy na Slovensku?"
 
     # Report Type
     report_type = "research_report"
