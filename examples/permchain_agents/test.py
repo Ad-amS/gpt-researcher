@@ -1,6 +1,7 @@
 # main
 import os, sys
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
 from examples.permchain_agents.researcher import Researcher
 from examples.permchain_agents.editor_actors.editor import EditorActor
@@ -11,14 +12,13 @@ from examples.permchain_agents.research_team import ResearchTeam
 from scraping.processing.text import md_to_pdf
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     output_path = "./output"
     if not os.path.exists(output_path):
         # If the directory does not exist, create it
         os.makedirs(output_path)
 
-    stocks = ["NVDA"]
+    stocks = ["MSFT"]
 
     for stock in stocks[:1]:
         query = f"is the stock {stock} a good buy?"
